@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename = 'css/base.css') }}">
+    
+    <title>BlindSight</title>
+</head>
+
+<body>
+    <nav>
+        <div class="sideHeading">
+            <span class="logo">
+                <a href="https://rishi-mishra.netlify.app/"><img src="{{ url_for('static', filename = 'svg/port2.svg') }}"></a> 
+            </span>
+           <span> BLIND SIGHT </span>
+        </div>
+
+        <div class="menu">
+            <ul>
+                <li>
+                    <a class="under" href="/" style="color:#f5b027 ;">HOME</a>
+                </li>
+                <li>
+                    <a class="under" href="">UPLOAD</a>
+                </li>
+                <li>
+                    <a class="under" href="https://rishi-mishra.netlify.app/">ABOUT</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container">
+
+        {% if your_result %}
+        <div class="imageContainer">
+            <div class="row mt-5  mx-auto">
+                <h3 style="font-weight:bolder;color:#f5b027;" class="col">RESULT OF BLINDSIGHT </h1>
+            </div>
+            
+			<div class="row mx-auto">
+				<div class="col-sm-6">
+					<img class="image" src="{{your_result['image']}}">
+				</div>
+				<div class="col-sm-6">
+					<div class="row mx-auto">
+                        <p class="text"> Generated Caption : </p>
+                        <p> <b>{{ your_result['caption'] }} </b> </p>
+                    </div>
+                    <div class="row mx-auto">
+                        <audio controls>
+                            <source src="{{your_result['audio']}}" type="audio/mpeg">
+                        </audio>
+                    </div>
+				</div>
+            </div>
+
+
+        </div>
+
+        {%else%}
+
+        <div class="infoContainer">
+           
+            <div class="row mt-5  mx-auto">
+                <h1 style="font-weight:bolder;color:#f5b027;" class="col">WELCOME TO BLINDSIGHT </h1>
+            </div>
+        
+            <div class="row mx-auto">
+                <p class="col" style="font-weight: bold;">This website uses deep learning model to predict the scenario which is happening
+                    inside the image i.e. it captions the image. 
+                </p>
+            </div>
+
+            <div class="row mx-auto">
+                <p class="col"> To try it simply click on choose file button,browse the image and after the 
+                    image gets uploaded, model will caption it based on previously saved 
+                    weights of model and then show you on the screen. 
+                </p>
+            </div>
+           
+            <div class="row mt-2 mb-5 mx-auto">
+                <form method="POST" action="/" enctype="multipart/form-data"> 
+                    
+                    <div class="input-group col mb-3" name="userlang">
+                        <div class="input-group-prepend">
+                          <label class="input-group-text" for="inputGroupSelect01">Language</label>
+                        </div>
+                        <select class="custom-select" name="languageSelected" id="inputGroupSelect01">
+                          <option selected>Choose..</option>
+                          <option value="en">English</option>
+                          <option value="es">Spanish</option>
+                          <option value="pt">Portuguese</option>
+                          <option value="zh-CN">Mandarin</option>
+                          <option value="fr">French</option>
+                          <option value="hi">Hindi</option>
+                          <option value="de">German</option>
+                          <option value="gu">Gujarati (India)</option>
+                        </select>
+                    </div>
+
+                    <input class="col-md-12 mx-3 form-control" type="file" name="userfile" placeholder="Your image">
+                    <br>
+        
+                    <button type="submit" class="col-md-12 mx-3 btn">Submit</button>
+                </form>
+            </div>
+           
+        </div>
+		
+        {% endif %}
+        
+    </div>
+</body>
+</html>

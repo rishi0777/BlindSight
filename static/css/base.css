@@ -1,0 +1,129 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+
+body{
+    background:#111111;
+    color: #FFFFFF;
+    font-family: 'Dosis', sans-serif;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100vh;
+}
+
+nav{
+    flex: 0.03;
+    background-color:#252525;
+    padding-bottom: 0.5rem;
+    padding-top: 0.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.sideHeading{
+    flex:0.15;
+    font-size: 1.2rem;
+    font-weight: bold;
+    display: flex;
+    justify-content:space-evenly;
+    align-items: center;
+}
+.menu{
+    padding-top: 1rem;
+    flex: 0.19;
+}
+ul{
+    display: flex;
+    list-style: none;
+    justify-content: space-around;
+}
+a{
+    position: relative;
+}
+.under{
+    color: rgb(255, 255, 255);
+    font-size: 0.95rem;
+    cursor: pointer;
+    text-align: center;
+}
+.under::after {
+    font-weight: bold;
+    content: "";
+    background-color: #ffc85c;
+    width: 0;
+    height: 0.2rem;
+    bottom: -0.3rem;
+    left: 0;
+    position: absolute;
+    transform: scaleX(0);
+    transform-origin: bottom right;
+    transition: 0.3s;
+}
+.under:hover{
+    color: #ffc85c;
+    text-decoration: none;
+}
+.under:hover::after{
+    width: 90%;
+    transform: scaleX(1);
+    transform-origin: bottom left;
+}
+.logo{
+    fill:#FFFFFF;
+    height: 2.5rem;
+    width: 2.5rem;
+    cursor: pointer;
+}
+
+
+.container{
+    flex: 0.97;
+    align-items: center;
+    display: flex;
+}
+.infoContainer{
+    border: 1rem solid #f5b027;
+    border-radius: 3rem;
+    border-width: 0.3rem;
+    
+}
+.imageContainer{
+    width: 100%;
+    border: 1rem solid #f5b027;
+    border-radius: 3rem;
+    border-width: 0.3rem;
+    padding-bottom: 2%;
+}
+
+.image{
+    height: 30rem;
+    width: 33rem;
+    border-radius: 3%;
+}
+
+.btn{
+    border: 1rem solid #f5b027;
+    border-width: 0.2rem;
+    color:#f5b027;
+}
+.btn:hover{
+    color: #FFF;
+    background-color: #f5b027;
+}
+
+@media only screen and (max-width: 1000px) {
+    
+}
+@media only screen and (max-width: 850px) {
+    
+}
+@media only screen and (max-width: 600px) {
+    
+}
+@media only screen and (max-width: 450px) {
+   
+}
